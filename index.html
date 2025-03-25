@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>free</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #ffffff;
+            transition: background-color 0.3s ease; /* Плавный переход фона */
+        }
+
+        .container {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rounded-image {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .number {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wallet-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .get-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .get-button:hover {
+            background-color: #0099ff;
+        }
+
+        .get-button:active {
+            transform: scale(0.95);
+            background-color: #6dc0f8;
+            opacity: 0.8; /* Сделаем кнопку немного белее при нажатии */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.407);
+            backdrop-filter: blur(5px); /* Размытие фона */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .overlay.active .popup {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="number"><b>Love Potion</b> - <span style="color: rgb(26, 255, 0);"><b>Rick Pickle</b></span></div>
+    <img src="rick.webp" alt="Rick" class="rounded-image">
+    <div class="number"><b>номер подарка</b> - <span style="color: rgb(175, 175, 175);">#8873</span></div>
+    <div class="number"><b>Модель</b> - <span style="color: rgb(175, 175, 175);">Pickle Rick - Love Potion</span></div>
+    <div class="number"><b>Стоимость</b> - <span style="color: rgb(34, 203, 255);"><s>48 TON</s> <span style="color: black;">-</span> <span style="color: chartreuse;"><b>0 TON</b></span></div>
+    <div class="button-container">
+        <button class="get-button" id="getButton">
+            <img src="wallet.png" alt="Wallet" class="wallet-icon">
+            Получить NFT подарок
+        </button>
+    </div>
+</div>
+
+
+<div class="overlay" id="overlay">
+    <div class="popup">
+        Подождите...
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.container');
+        const getButton = document.getElementById('getButton');
+        const overlay = document.getElementById('overlay');
+
+        // Плавное появление контента при загрузке страницы
+        setTimeout(() => {
+            container.classList.add('visible');
+        }, 100);
+
+        getButton.addEventListener('click', () => {
+            // Анимация кнопки
+            getButton.classList.add('active');
+            setTimeout(() => {
+                getButton.classList.remove('active');
+            }, 200);
+
+            // Показ оверлея
+            overlay.classList.add('active');
+
+            // Переадресация
+            setTimeout(() => {
+                window.location.href = 'https://t.me/+UIz94zec8xtkZjMy';
+            }, 2000); // Задержка 2 секунды
+        });
+    });
+</script>
+
+</body>
+</html>
